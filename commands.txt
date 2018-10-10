@@ -10,3 +10,7 @@ docker run -it --imageId-- sh
 -- Send command inside a running container
 docker exec -it --CONTAINER ID-- --COMMAND--
 	(docker exec -it 988b38f8d98fd redis-cli)
+	
+-- Execute docker-compose file
+docker-compose up
+docker-compose up --build

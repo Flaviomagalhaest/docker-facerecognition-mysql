@@ -32,9 +32,12 @@ RUN cd ~ && \
     cd  dlib/ && \
     python3 setup.py install --yes USE_AVX_INSTRUCTIONS
 	
-WORKDIR '/app'	
-RUN mkdir -p face-recognition-api
-COPY . .	
+#WORKDIR 'app/face-recognition-api'	
+#RUN mkdir -p face-recognition-api
+COPY /face-recognition-api /app
+RUN cd /app && \
+	pip3 install -r requirements.txt
+RUN python -m flask
 	
 # The rest of this file just runs an example script.
 
