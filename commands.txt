@@ -1,6 +1,9 @@
 -- Build a image from Dockerfile in current directory
 doker build .
 
+-- Build a image using a specific file (like Dockerfile.dev)
+docker build -f Dockerfile.dev .
+
 -- Start container with image id
 docker run --imageId--
 
@@ -14,3 +17,6 @@ docker exec -it --CONTAINER ID-- --COMMAND--
 -- Execute docker-compose file
 docker-compose up
 docker-compose up --build
+
+-- Execute docker-compose prod version
+docker-compose -f docker-compose.yml -f production.yml up --build
