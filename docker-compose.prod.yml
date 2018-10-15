@@ -1,0 +1,10 @@
+version: '3'
+services:
+ your-app-service:
+  build:
+   context: ../.
+   dockerfile: docker/face-recognition-api/Dockerfile
+  container_name: your-app
+  restart: always
+ db:
+  restart: always    

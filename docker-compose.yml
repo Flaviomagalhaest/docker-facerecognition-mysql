@@ -1,10 +1,19 @@
 version: '3'
 services:
- face-recognition-api:
-  build:
-   context: .
-   dockerfile: Dockerfile
+ your-app-service:
   ports:
-   - "5000:5000"
-  volumes:
-   - .:/app
+   - "5001:5001"            #port mapping
+  working_dir: /app         #workdir to command above
+  command: "python app.py"  #start command of your service
+ db:
+  build:
+   context: ../.            #context to find dockerfile
+   dockerfile: docker/mysql/Dockerfile
+  container_name: db-mysql  #container name
+  command: --default-authentication-plugin=mysql_native_password
+  ports:
+   - "3600:3306"            #3600 external port and 3306 internal port
+  environment:
+   MYSQL_ROOT_PASSWORD: root  #db password
+
+  
