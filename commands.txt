@@ -19,4 +19,4 @@ docker-compose up
 docker-compose up --build
 
 -- Execute docker-compose prod version
-docker-compose -f docker-compose.yml -f production.yml up --build
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
