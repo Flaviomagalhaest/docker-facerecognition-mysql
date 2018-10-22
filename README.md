@@ -1,6 +1,11 @@
-# docker-facerecognition-mysql
+# Docker Compose [face_recognition + MySQL] project
 
-A docker-compose template to build your app in a container with Hub of integrations services to Moodle and Mailchimp API's
+A docker-compose template to build your app in a container with [face_recognition lib](https://github.com/ageitgey/face_recognition) + a container with MySQL database
+
+<p align="center">
+  <img width="630" height="630" src="https://github.com/Flaviomagalhaest/docker-facerecognition-mysql/blob/master/images/Diagram.png">
+</p>
+
 
 ## Getting Started
 
