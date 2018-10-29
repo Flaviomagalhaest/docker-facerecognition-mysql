@@ -4,7 +4,7 @@ services:
   ports:
    - "5001:5001"            #port mapping
   working_dir: /app         #workdir to command above
-  command: "python app.py"  #start command of your service
+  command: "python app.py"  #start command of your app
  db:
   build:
    context: ../.            #context to find dockerfile

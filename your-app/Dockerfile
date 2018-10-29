@@ -31,19 +31,25 @@ RUN cd ~ && \
     cd  dlib/ && \
     python3 setup.py install --yes USE_AVX_INSTRUCTIONS
 
-# Create .ssh directory to place the key of private repository (necessary case)
+# The lines 35-44 bellow is for case you need to clone a private repository ------------
+# Create .ssh directory to place the key of private repository
 RUN mkdir /root/.ssh/
+
 # Copy key to repository inside container
 COPY docker/id_rsa /root/.ssh/id_rsa
-# Run command to validate key in repository
+
+# Run command to validate key in repository and add know_hosts
 RUN chmod 400 /root/.ssh/id_rsa && \
     touch /root/.ssh/known_hosts && \
     ssh-keyscan -T 60 bitbucket.org >> /root/.ssh/known_hosts
+# ---------------------------------------------------------------------------------------
 
 # Clone >>>>YOUR APP<<<<< repository here. (As an example, this command will clone ageitgey face_recogntion)
 RUN git clone git@bitbucket.org:ageitgey/face_recognition.git && \ 
+    # Changes the folder name of the cloned project to 'app'
     mv face_recognition app
 
 # Set workdir and install dependencies of project
 WORKDIR /app
+# Installs dependecies added in requirements.txt
 RUN pip3 install -r docker/requirements.txt
